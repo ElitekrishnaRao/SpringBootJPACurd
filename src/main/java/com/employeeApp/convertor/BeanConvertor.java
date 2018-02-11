@@ -1,5 +1,8 @@
 package com.employeeApp.convertor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import com.employeeApp.dao.Vehicle;
@@ -23,8 +26,16 @@ public class BeanConvertor {
     	vehicleDto.setMake(vehicle.getMake());
     	vehicleDto.setYear(vehicle.getYear());
     	vehicleDto.setModel(vehicle.getModel());
-		return null;
+		return vehicleDto;
 		
 	}
+    
+    public List<VehicleDto> daoListToDtoList(List<Vehicle> vehicleList){
+    	List<VehicleDto> vehicleDtoList = new ArrayList<VehicleDto>();
+    	 for (Vehicle vehicle : vehicleList) {
+    		 vehicleDtoList.add(daoToDtoConvertor(vehicle));
+		}
+    	 return vehicleDtoList;
+    }
 	
 }
